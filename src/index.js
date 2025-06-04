@@ -18,9 +18,9 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, readyClient => {
-        console.log(`Client is ready as ${readyClient.user.tag}`);
-        console.log(`Starting icon rotation`)
-    const imageUrls = ["https://cdn.asthriona.com/i/2025/06/guildimg1.png", "https://cdn.asthriona.com/i/2025/06/guildimg2.png"];
+    console.log(`Client is ready as ${readyClient.user.tag}`);
+    console.log(`Starting icon rotation`)
+    const imageUrls = ["https://cdn.asthriona.com/i/2025/06/guildimg1.png", "https://cdn.asthriona.com/i/2025/06/guildimg2.png", "https://cdn.asthriona.com/i/2025/06/firefox_250603-131308.png", "https://cdn.asthriona.com/i/2025/06/firefox_250603-131322.png"];
     iconRotation(client, process.env.GUILDID, imageUrls);
 })
 
@@ -31,10 +31,10 @@ client.on(Events.InteractionCreate, interaction => {
         const { commandName } = interaction;
         const command = client.commands.get(commandName);
         if(!command) return;
-            try {
+        try {
             command.execute(client, interaction);
         } catch (err) {
-           return console.error(err)
+            return console.error(err)
         }
     }
 })
@@ -72,7 +72,7 @@ async function iconRotation(client, guildId, imageUrls) {
         index++;
     }
     rotate();
-    setInterval(rotate, 1000*60*60);
+    setInterval(rotate, 2000*60*60);
 }
 
 
